@@ -1,0 +1,13 @@
+<div style="width: 80%;">
+   <div style="text-align:center">
+     <%= image_tag "https://media.licdn.com/dms/image/C4D0BAQGiIjaGVfpCag/company-logo_200_200/0/1647508185436?e=1695254400&v=beta&t=dfHYTyYvG4R6vn1jWppqo-2k97LZMdW3R-NvO44LhGE" , :style => "width: 100px; height: auto"%>
+  </div>
+   <div style="width: 100%; text-align:center; color:#000000; font-family:Trebuchet MS, sans-serif;">
+    <h2>Welcome To GOSCORE</h2>
+  </div>
+  <div style="width: 100%; text-align:center;">
+    <button style="padding: 6px;font-family:Trebuchet MS, sans-serif; font-size: 14px; background: #139137; border: unset; border-radius:6px; margin-top:8px; cursor:pointer;">
+      <%= link_to 'Confirm Email', confirmation_url(@resource, confirmation_token: @token), :style => "text-decoration: none; color: #fff !important;" %>
+    </button>
+  </div>
+</div>
