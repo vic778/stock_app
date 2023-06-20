@@ -7,7 +7,7 @@ RSpec.describe Investment, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:symbol_of_stock) }
-    it { should validate_presence_of(:shares) }
+    it { should validate_presence_of(:number_of_shares) }
     it { should validate_presence_of(:purchase_price) }
     it { should validate_presence_of(:purchase_date) }
 
@@ -17,12 +17,12 @@ RSpec.describe Investment, type: :model do
     end
 
     it 'is not valid without a symbol' do
-      investment.symbol = nil
+      investment.symbol_of_stock = nil
       expect(investment).to_not be_valid
     end
 
     it 'is not valid without a shares' do
-      investment.shares = nil
+      investment.number_of_shares = nil
       expect(investment).to_not be_valid
     end
 
