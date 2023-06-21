@@ -8,7 +8,7 @@ class PortfoliosController < PermissionsController
   end
 
   def show
-    market_data = Portfolios::DailyReportService.new(@portfolio).call
+    market_data = Portfolios::DailyReportService.new(@portfolio, params).call
     render json: { portfolio: @portfolio, historical_data: market_data.first }
   end
 

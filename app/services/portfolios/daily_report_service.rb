@@ -1,10 +1,12 @@
 module Portfolios
   class DailyReportService
-    attr_accessor :portfolio, :array
+    attr_accessor :portfolio, :array, :params
 
-    def initialize(portfolio)
+    def initialize(portfolio, params = {})
       @portfolio = portfolio
       @array = []
+      @format = params[:format]
+      @year = params[:year].to_i || Date.today.year
       @format = 'json'
     end
 
@@ -15,6 +17,7 @@ module Portfolios
     def json
       @portfolio.investments.each do |investment|
         current_price = fetch_market_data(investment.symbol)[:current_price]
+
         row = {}
         row[:symbol] = investment.symbol
         row[:purchase_price] = investment.purchase_price
@@ -26,9 +29,25 @@ module Portfolios
         # row[:current_value] = (row[:cost_of_shares] - row[:total_daily_gain_or_loss]).round(2)
         row[:percentage] = (row[:total_daily_gain_or_loss] / row[:cost_of_shares]) * 100
 
+        if @year.present? && @year.is_a?(Integer) && @year.positive?
+          row[:percentage] = (row[:percentage] /= @year).round(2)
+          row[:total_daily_gain_or_loss] = (row[:gain_or_lost_per_share] * investment.number_of_shares).round(2) * @year
+        end
+
         array << row
       end
       array
+    end
+
+    def csv
+      CSV.generate do |csv|
+        csv << ["GOSCORE"]
+        csv << ["Portfolio Daily Report"]
+        csv << ["Date: #{Date.today}"]
+        json.each do |key, value|
+          csv << [key, value]
+        end
+      end
     end
 
     protected

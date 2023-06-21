@@ -27,9 +27,6 @@ module MakingApi
     end
 
     def fetch_historical_data(symbol)
-      # Make a request to the API endpoint for historical data
-      # and retrieve the desired data for the specified symbol
-      # You need to replace the placeholders with the actual API endpoint and parameters
       url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=#{symbol}&apikey=#{@api_key}"
       response = Net::HTTP.get(URI.parse(url))
 
