@@ -15,7 +15,7 @@ class PermissionsController < ApplicationController
   end
 
   def authenticate_user!(_options = {})
-    render json: { loggedIn: false, result: [], message: 'Please log in to continue' } unless signed_in?
+    render json: { message: 'Please log in to continue' }, status: :unauthorized unless signed_in?
   end
 
   def current_user

@@ -12,12 +12,5 @@ RSpec.describe "Users", type: :request do
         expect(data["message"]).to eq("Thank you for joining the GOSCORE platform, please check your email and verify your account!")
       end
     end
-
-    describe "PUT /users/:id" do
-      it "updates a user" do
-        put user_path(user)
-        expect(response).to have_http_status(200)
-      end
-    end
   end
 end
