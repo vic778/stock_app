@@ -9,11 +9,11 @@
 ### ERD PG
 ![img](app/assets/images/erb.png)
 
-### User confirmation Mailer
-![img](app/assets/images/confirm.png)
-
 ### Message rendered from the backend 
 ![img](app/assets/images/reg_res.png)
+
+### User confirmation Mailer
+![img](app/assets/images/confirm.png)
 
 ### Deployment
  [Video](https://www.loom.com/share/25504df4e78a44d8b1a2d5caa4b71c98?sid=89cf883f-b4f1-4a6b-aa26-17878595dd0c)
@@ -52,7 +52,7 @@ crreate an investement
 `POST /api/portfolios/:id/investments`
 
 ## Notice
- all the calculations are dont in the daily_report_service.
+ all the calculations are in the daily_report_service.
   ![service](app/assets/images/serv.png)
 
 
@@ -80,9 +80,9 @@ start the local server by running `rails s`
 
 ### Testing
 
-run the tests by typing `rails rswag`
+run the tests by typing `rspec`
 
-![img](app/assets/images/rspec.png)
+![img](app/assets/images/rsp.png)
 
 
 ### Documentation
