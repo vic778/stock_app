@@ -52,7 +52,7 @@ crreate an investement
 `POST /api/portfolios/:id/investments`
 
 ## Notice
- all the calculations are dont in the daily_report_service.
+ all the calculations are in the daily_report_service.
   ![service](app/assets/images/serv.png)
 
 
@@ -80,9 +80,9 @@ start the local server by running `rails s`
 
 ### Testing
 
-run the tests by typing `rails rswag`
+run the tests by typing `rspec`
 
-![img](app/assets/images/rspec.png)
+![img](app/assets/images/rsp.png)
 
 
 ### Documentation
