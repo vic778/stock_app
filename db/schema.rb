@@ -15,10 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_205122) do
   enable_extension "plpgsql"
 
   create_table "investments", force: :cascade do |t|
-    t.string "symbol_of_stock"
-    t.float "purchase_price"
-    t.integer "number_of_shares"
-    t.date "purchase_date"
+    t.string "symbol"
+    t.float "purchase_price", default: 0.0
+    t.float "current_value", default: 0.0
+    t.float "daily_gain_loss", default: 0.0
+    t.integer "number_of_shares", default: 0
+    t.datetime "purchase_date"
+    t.boolean "has_gain", default: false
     t.bigint "portfolio_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

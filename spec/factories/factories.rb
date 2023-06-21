@@ -21,7 +21,7 @@ FactoryBot.define do
   end
 
   factory :investment do
-    symbol_of_stock { "MyString" }
+    symbol { "MyString" }
     purchase_price { 1.5 }
     number_of_shares { 1 }
     purchase_date { "2023-06-21" }
