@@ -52,7 +52,7 @@ crreate an investement
 `POST /api/portfolios/:id/investments`
 
 ## Notice
- all the calculations are in the daily_report_service.
+ all the calculations includes comments for formula are in the daily_report_service.
   ![service](app/assets/images/serv.png)
 
 

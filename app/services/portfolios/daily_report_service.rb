@@ -22,16 +22,20 @@ module Portfolios
         row[:symbol] = investment.symbol
         row[:purchase_price] = investment.purchase_price
         row[:number_of_shares] = investment.number_of_shares
-        row[:cost_of_shares] = investment.number_of_shares * investment.purchase_price
-        row[:current_price] = current_price
-        row[:gain_or_lost_per_share] = (current_price - investment.purchase_price).round(2)
-        row[:total_daily_gain_or_loss] = (row[:gain_or_lost_per_share] * investment.number_of_shares).round(2)
-        # row[:current_value] = (row[:cost_of_shares] - row[:total_daily_gain_or_loss]).round(2)
-        row[:percentage] = (row[:total_daily_gain_or_loss] / row[:cost_of_shares]) * 100
+        row[:total_investement] = investment.number_of_shares * investment.purchase_price # get the total amount of investment for shares
+        row[:current_price] = current_price # get the current price of the share from the api
+        row[:current_total_price] = investment.number_of_shares * row[:current_price]
+
+        # get the gain or lost, the formula is current_total_price - total_investement
+        row[:gain_or_lost] = (row[:current_total_price] - row[:total_investement]).round(2)
+        # get the percentage, the formula is gain_or_lost / total_investement * 100
+        # if you want to check if the amount is correct, you can do
+        # the total_investement * percentage / 100 and it should be equal to gain_or_lost
+        row[:percentage] = ((row[:gain_or_lost] / row[:total_investement]) * 100).round(2)
 
         if @year.present? && @year.is_a?(Integer) && @year.positive?
-          row[:percentage] = (row[:percentage] /= @year).round(2)
-          row[:total_daily_gain_or_loss] = (row[:gain_or_lost_per_share] * investment.number_of_shares).round(2) * @year
+          row[:percentage] = (row[:percentage] /= @year).round(2) # divide the percentage by the year
+          row[:gain_or_lost] = (row[:gain_or_lost] * row[:number_of_shares]) * @year
         end
 
         array << row
