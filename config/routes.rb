@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :portfolios do
       resources :investments
     end
+
+    # root to: 'home#index'
+    get 'home', to: 'home#index'
   end
 end

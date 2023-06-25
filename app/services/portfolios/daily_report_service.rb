@@ -7,7 +7,7 @@ module Portfolios
       @array = []
       @format = params[:format]
       @year = params[:year].to_i || Date.today.year
-      @format = 'json'
+      @format = params[:format] || 'json'
     end
 
     def call
@@ -24,7 +24,7 @@ module Portfolios
         row[:number_of_shares] = investment.number_of_shares
         row[:total_investement] = investment.number_of_shares * investment.purchase_price # get the total amount of investment for shares
         row[:current_price] = current_price # get the current price of the share from the api
-        row[:current_total_price] = investment.number_of_shares * row[:current_price]
+        row[:current_total_price] = (investment.number_of_shares * row[:current_price]).round(2) # get the current total price of the shares
 
         # get the gain or lost, the formula is current_total_price - total_investement
         row[:gain_or_lost] = (row[:current_total_price] - row[:total_investement]).round(2)
@@ -35,7 +35,7 @@ module Portfolios
 
         if @year.present? && @year.is_a?(Integer) && @year.positive?
           row[:percentage] = (row[:percentage] /= @year).round(2) # divide the percentage by the year
-          row[:gain_or_lost] = (row[:gain_or_lost] * row[:number_of_shares]) * @year
+          # row[:gain_or_lost] = (row[:gain_or_lost] * row[:number_of_shares]) * @year
         end
 
         array << row
@@ -57,7 +57,7 @@ module Portfolios
     protected
 
     def fetch_market_data(symbol)
-      market_data_service = MakingApi::MarketDataService.new(ENV.fetch('alpha_key', nil))
+      market_data_service = MakingApi::MarketDataService.new(ENV.fetch('alpha_key'))
       market_data_service.fetch_market_data(symbol)
     end
   end
