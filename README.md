@@ -90,7 +90,7 @@ run the tests by typing `rspec`
 ![img](app/assets/images/rsp.png)
 
 
-### Documentation
+## Documentation
   User Registration and Login:
 
 Users can create an account by providing their details and registering.
