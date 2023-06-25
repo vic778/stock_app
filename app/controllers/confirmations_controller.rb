@@ -9,7 +9,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     if Rails.env.development?
       if resource.errors.empty?
         @current_user = resource
-        redirect_to 'http://localhost:3000/login' if @current_user
+        redirect_to 'http://localhost:4000/dashboard' if @current_user
       else
         render json: { error: 'This confirmation link has expired' }
       end
