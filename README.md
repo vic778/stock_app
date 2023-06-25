@@ -30,6 +30,11 @@
 - Redis
 - Rspec
 
+### Front-End
+[Repo Link](https://github.com/vic778/stock_app_front)
+
+![frontend](app/assets/images/fron.png)
+
 ## Endepoints
   allow user to authenticate and return a token
 
