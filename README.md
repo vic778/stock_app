@@ -91,6 +91,35 @@ run the tests by typing `rspec`
 
 
 ### Documentation
+  User Registration and Login:
+
+Users can create an account by providing their details and registering.
+  - Once registered, users can log in to the application using their credentials.
+  - The login process generates a token that will be used for subsequent API calls.
+
+Portfolio Creation:
+
+ - After logging in, users can create a new portfolio.
+ - They can provide a name and an optional description for the portfolio.
+ - Upon creation, the portfolio is associated with the logged-in user.
+
+Investment Creation:
+
+ - Users can add investments to their portfolios.
+ - They need to provide details such as the security symbol or ticker, purchase price, number of shares, and purchase date.
+ - When creating an investment, the user selects the portfolio to which it belongs.
+
+Profit and Loss Calculation:
+
+ - The application provides services to calculate the profit and loss of investments.
+ - It takes into account the purchase price, current market data, and the number of shares.
+ - The calculated profit and loss are displayed to the user.
+
+Filtering and Historical Data:
+
+ - Users can filter their investments based on various criteria such as a specific year.
+ - The application fetches and displays the historical performance data for the selected investments.
+ - CSV File Download:
 
 
 ## Author
